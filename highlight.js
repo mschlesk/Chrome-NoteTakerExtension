@@ -6,7 +6,9 @@ chrome.storage.local.get('changes', function(results) {
     // clone contents of span element
     let newNode = this.childNodes[0].cloneNode();
     // replace span with it's contents
-    this.parentNode.replaceChild(newNode, this);
+    let parentNode = this.parentNode;
+    parentNode.replaceChild(newNode, this);
+    parentNode.normalize();
   });
 
   changes.textToHighlight.forEach((value) => {
